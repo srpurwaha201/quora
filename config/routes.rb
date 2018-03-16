@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :answers
-  resources :questions,only: [:new]
+  resources :questions, only: [:new, :index, :create, :destroy, :edit, :update]
   get 'home/index'
   root 'home#index'
   devise_for :users

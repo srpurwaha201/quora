@@ -1,2 +1,4 @@
 <b>Answered by : <%=answer.user.full_name%></b><br>
-<%=answer.answer%><br><br>
+<%=answer.answer%><br>
+<%= link_to "Remove answer", answer_path(:id => answer.id), method: :delete %><br>
+<%= link_to 'Edit', edit_answer_path(answer) %><br><br>
