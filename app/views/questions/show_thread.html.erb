@@ -1,0 +1,6 @@
+<%= @question.question%>
+<b>Asked by <%=@question.user.full_name%></b><br><br>
+<% @answers.each do |answer|%>
+  <%= render :partial => 'answers/answer', :locals => {:answer => answer} %>
+<%end%>
+<%= link_to "back", root_path%>

@@ -1,5 +1,0 @@
-<%=@question.question%> <br>
-<b>Asked by : <%=@question.user.full_name%></b><br><br><br>
-<%@answers.each do |answer|%>
-  <%=render 'answers/answer', answer: answer%><br><br>
-<% end %>

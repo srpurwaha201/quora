@@ -7,6 +7,11 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
+  def show_thread
+    set_question
+    @answers = @question.answers
+  end
+
   # GET /questions/1
   # GET /questions/1.json
   def show
