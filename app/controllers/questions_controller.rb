@@ -5,11 +5,13 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.all
+    @questions = @questions.sort_by{ |obj| obj.created_at }.reverse
   end
 
   def show_thread
     set_question
     @answers = @question.answers
+    @answers = @answers.sort_by{ |obj| obj.created_at}.reverse
   end
 
   # GET /questions/1

@@ -1,8 +1,10 @@
 <%= question.question%> <br />
 <!--<b>Asked by : <%=question.user.first_name%> <%=question.user.last_name%></b> <br />-->
-<b>Asked by : <%= question.user.full_name %></b> <br />
+<b>Asked by : <%= question.user.full_name %><br>
+  <%= time_ago_in_words(question.created_at)%> ago</b> <br />
 <%= link_to "Answer this", new_answer_path(:question => question)%>
 <%=link_to "Show thread", {:controller => "questions", :action => "show_thread", :id => question}%>
+(<%=question.answers.count%>)
 <%= link_to 'Edit', edit_question_path(question) %>
 <%= link_to "Remove Question", question_path(:id=> question) , :method => :delete%>
 <br><br>
