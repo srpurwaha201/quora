@@ -53,6 +53,17 @@ class AnswersController < ApplicationController
     end
   end
 
+  def upvote
+    set_answer
+    @answer.liked_by current_user
+    redirect_to(:back)
+  end
+
+  def downvote
+    set_answer
+    @answer.downvote_from current_user
+    redirect_to(:back)
+  end
   # DELETE /answers/1
   # DELETE /answers/1.json
   def destroy

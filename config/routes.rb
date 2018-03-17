@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  resources :answers
+  resources :answers, only: [:new, :index, :create, :destroy, :edit, :update]
   resources :questions, only: [:new, :index, :create, :destroy, :edit, :update]
   get 'home/index'
   root 'home#index'
+  get 'answers/upvote'
+  get 'answers/downvote'
+  get 'questions/upvote'
+  get 'questions/downvote'
   devise_for :users
   get 'questions/show_thread'
   # The priority is based upon order of creation: first created -> highest priority.

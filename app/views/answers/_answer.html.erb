@@ -1,5 +1,8 @@
 <b>Answered by : <%=answer.user.full_name%></b><br>
 <%= time_ago_in_words(answer.created_at)%> ago<br>
 <%=answer.answer%><br>
+<%= answer.weighted_score %> votes<br>
+<%= link_to "Upvote", answers_upvote_path(:id => answer.id)%>
+<%= link_to "Downvote", answers_downvote_path(:id => answer.id)%>
 <%= link_to "Remove answer", answer_path(:id => answer.id), method: :delete %><br>
 <%= link_to 'Edit', edit_answer_path(answer) %>

@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
   def show_thread
     set_question
     @answers = @question.answers
-    @answers = @answers.sort_by{ |obj| obj.created_at}.reverse
+    @answers = @answers.sort_by{ |obj| obj.weighted_score}.reverse
   end
 
   # GET /questions/1
@@ -66,6 +66,18 @@ class QuestionsController < ApplicationController
       format.html { redirect_to root_path, notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def upvote
+    set_question
+    @question.liked_by current_user
+    redirect_to(:back)
+  end
+
+  def downvote
+    set_question
+    @question.downvote_from current_user
+    redirect_to(:back)
   end
 
   private
