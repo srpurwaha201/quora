@@ -1,9 +1,13 @@
-<%= @question.question%>
-<b>Asked by <%=@question.user.full_name%></b><br>
+<%= @question.question%><br>
+<b>Asked by : <%=@question.user.full_name%></b><br>
 <%= time_ago_in_words(@question.created_at)%> ago <br>
 <%= link_to "Answer this", new_answer_path(:question => @question.id)%><br><br>
 <% @answers.each do |answer|%>
   <%= render :partial => 'answers/answer', :locals => {:answer => answer} %>
+    <b>Comments: </b><br>
+  <% answer.comments.each do |comment|%>
+    <%= render :partial => 'comments/comment', :locals => {:comment => comment}%>
+  <% end %>
   <br><br>
 <%end%>
 <%= link_to "back", root_path%>

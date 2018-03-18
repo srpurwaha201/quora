@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments, only: [:new, :index, :create, :destroy, :edit, :update]
   resources :answers, only: [:new, :index, :create, :destroy, :edit, :update]
   resources :questions, only: [:new, :index, :create, :destroy, :edit, :update]
   get 'home/index'
