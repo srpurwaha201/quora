@@ -4,7 +4,9 @@
 <%= link_to "Answer this", new_answer_path(:question => @question.id)%><br><br>
 <% @answers.each do |answer|%>
   <%= render :partial => 'answers/answer', :locals => {:answer => answer} %>
+  <% if answer.comments.count > 0 %>
     <b>Comments: </b><br>
+  <%end%>
   <% answer.comments.each do |comment|%>
     <%= render :partial => 'comments/comment', :locals => {:comment => comment}%>
   <% end %>

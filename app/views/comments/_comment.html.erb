@@ -1,2 +1,4 @@
 <%=comment.comment%><br>
 <b>commented by : <%=comment.user.full_name%></b><br>
+<%= link_to 'Edit', edit_comment_path(comment) %>
+<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %><br>
