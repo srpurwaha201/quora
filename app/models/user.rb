@@ -6,11 +6,12 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
   has_many :comments
+  acts_as_voter
   def full_name
     first_name + " " + last_name
   end
 
   def followees
-    Follow.where(:follower_id => current_user.id)
+    Follow.where(:follower_id => id).pluck(:followee_id)
   end
 end

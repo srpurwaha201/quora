@@ -3,3 +3,14 @@
 <% @questions.each do |question|%>
   <%= render 'questions/question', question: question%>
 <%end%>
+<% @upvoted.each do |object|%>
+  <%object[:items].each do |item|%>
+    <% if item.class == Answer%>
+      <b>Answer Upvoted by <%= object[:upvotee].full_name%></b><br>
+      <%= render :partial => 'answers/answer', :locals => {:answer => item} %>
+      <% elsif item.class == Question%>
+      <b>Question Upvoted by <%= object[:upvotee].full_name%></b><br>
+      <%= render 'questions/question', question: item%>
+      <% end %>
+  <%end%>
+<% end %>
